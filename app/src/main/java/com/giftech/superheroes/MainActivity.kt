@@ -56,7 +56,12 @@ fun SuperheroesApp() {
             targetState = true
         }
     }
-    Scaffold() {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopAppBar()
+        }
+    ) {
         AnimatedVisibility(
             visibleState = visibleState,
             enter = fadeIn(
@@ -122,6 +127,21 @@ fun HeroItem(hero: Hero, modifier: Modifier = Modifier) {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun TopAppBar(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .size(56.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.h1,
+        )
     }
 }
 
